@@ -1,7 +1,7 @@
-from Hashtable import *
+from LRUCache import *
 
 
-h1=HashTable(4,4)
+h1=LRUCache(4,4)
 
 h1.insertData(11,'hey11')
 h1.insertData(10,'hey10')
