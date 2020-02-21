@@ -35,7 +35,9 @@ class LRUCache:
         result=li.search(key)
         if(result==None):
             return None
-        self.cacheData.fetchData(result)
+        cachesize=self.cacheData.getSize()
+        if cachesize>1:
+            self.cacheData.fetchData(result)
         return result.getData()
     
     # Delete the last Node
