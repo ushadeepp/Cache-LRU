@@ -1,21 +1,46 @@
 from LRUCache import *
 
+import unittest
 
-h1=LRUCache(4,4)
+class TestLRUCache(unittest.TestCase):
 
-h1.insertData(11,'hey11')
-h1.insertData(10,'hey10')
-h1.insertData(12,'hey12')
-h1.insertData(16,'hey16')
-h1.insertData(5,'hey10')
+    def test_insert(self):
+        cache=LRUCache(4,4)
+        cache.insertData(1,'data-1')
+        self.assertEqual('data-1', cache.getData(1))
+    
+    def test_more_data_insert(self):
+        cache=LRUCache(4,4)
+        cache.insertData(1,'data-1')
+        cache.insertData(2,'data-2')        
+        self.assertEqual('data-2', cache.getData(2))
+    
+    def test_eviction_full_cache(self):
+        cache=LRUCache(4,2)
+        cache.insertData(1,'data-1')
+        cache.insertData(2,'data-2')
+        cache.insertData(3,'data-3')      
+        self.assertEqual(None, cache.getData(1))
+    
+    def test_least_recently_used_not_evicted(self):
+        cache=LRUCache(4,2)
+        cache.insertData(1,'data-1')
+        cache.insertData(2,'data-2')
+        cache.getData(2)
+        cache.insertData(3,'data-3')      
+        self.assertEqual('data-2', cache.getData(2))
+    
+    # Single linked list test
+    def test_store_more_data_with_same_hash(self):
+        cache=LRUCache(4,2)
+        cache.insertData(1,'data-1')
+        cache.insertData(5,'data-2')
+        res1=cache.getData(1)
+        res2=cache.getData(5)
+        self.assertEqual('data-1'+'data-2', res1+res2)  
+    
+    
+        
 
-
-
-re=h1.getData(12)
-# re=h1.getData(10)
-
-print('result')
-print(re)
-
-
-h1.printTableAndCacheQueue()
+if __name__ == '__main__':
+    unittest.main()
