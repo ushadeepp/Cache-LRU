@@ -1,3 +1,4 @@
+# Double linked Node implementation
 class Node:
     def __init__(self,key,data,prev,next):
         self.key=key

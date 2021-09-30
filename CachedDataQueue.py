@@ -42,25 +42,22 @@ class CachedDataQueue:
 
     # Geting Data fetched and moving the Node to front of the list as it is Recently Used 
     def fetchData(self,nodeRef):
-        if nodeRef!=self.head and nodeRef!=self.tail:
-            
+        if nodeRef!=self.head and nodeRef!=self.tail:            
             nodeRef.getPrev().setNext(nodeRef.getNext())
             nodeRef.getNext().setPrev(nodeRef.getPrev())
         elif nodeRef==self.head:
             self.head=nodeRef.getNext()
             nodeRef.getNext().setPrev(nodeRef.getPrev())
             # nodeRef.setPrev(None)
-        elif nodeRef==self.tail:
-            
+        elif nodeRef==self.tail:            
             self.tail=nodeRef.getPrev()
             nodeRef.getPrev().setNext(nodeRef.getNext())
             print(self.tail)
-            # nodeRef.setNext(None)
-            
+            # nodeRef.setNext(None)            
         self.addData(nodeRef)    
 
           
-
+    # Method to delete the head
     def deleteHead(self):
         temp=self.head
         self.head=self.head.getNext()

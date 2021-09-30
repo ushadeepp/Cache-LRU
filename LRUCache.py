@@ -3,8 +3,7 @@ from LinkedList import *
 from CachedDataQueue import * 
 
 #  LRUCache data structure is the combination of the HashTable which stores data in single Linked List & Doubly Linked List
-class LRUCache:
-    
+class LRUCache:    
     # cunstrcutor initialize tableSize & cacheMaxSize
     def __init__(self,tableSize,cacheMaxSize):
         self.tableSize=tableSize
@@ -46,9 +45,8 @@ class LRUCache:
         keyHash=self.hashFunc(deletedNode.getKey())
         self.hashTable[keyHash].deleteNode(deletedNode)
         self.cacheData.deleteTail()
-        
 
-
+    # Print current HashTable and Queue 
     def printTableAndCacheQueue(self):
         for key in range(self.tableSize):
             print('Key'+str(key)+':   --------------------')

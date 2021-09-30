@@ -55,17 +55,16 @@ class LinkedList:
                 prev.setNext(cur.getNext())
                 del cur
             
-
+    # Delete head
     def deleteHead(self):
         temp=self.head
         self.head=self.head.getNext()
         del temp
-    
+    # Delete Tail
     def deleteTail(self):
         cur=self.head
         while(cur.getNext()!=self.tail):
-            cur=cur.getNext()
-        
+            cur=cur.getNext()        
         temp=self.tail
         cur.setNext(None)
         self.tail=cur
